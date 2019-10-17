@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+    ViewBag.Title = "Pet - Lista";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Home/IndexAdministrador?usuario_id=@ViewBag.UsuarioID">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Pets</li>
+    </ol>
+</nav>
+
+<div class="jumbotron">
+    <h3>Lista de pets</h3>
+    <p class="lead">
+        Lista com todos os pets cadastrados
+    </p>
+    <hr class="my-4">
+    <p>Para registrar um novo pet clique no botão abaixo.</p>
+    <a class="btn btn-primary" href="~/Pet/Cadastro?usuario_id=@ViewBag.UsuarioID" role="button">Novo pet</a>
+</div>
+
+<table class="table d-none" id="table_pets">
+    <thead>
+        <tr>
+            <th scope="col" class='text-center'>#</th>
+            <th scope="col" class='text-center'>Codigo</th>
+            <th scope="col" class='text-left'>Nome</th>
+            <th scope="col" class='text-left'>Tipo</th>
+            <th scope="col" class='text-left'>Cliente</th>
+            <th scope="col" class='text-left'>Raça</th>
+            <th scope="col" class='text-center'>Autorização</th>
+            <th scope="col" class='text-center'>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<div class="d-none" id="content_list_message">
+    <label class="alert alert-danger" id="message_fail">Falha ao carregar lista de pets.</label>
+</div>
+
+<div class="row d-none" id="content_list_loader">
+    <img src="~/Content/images/loader.gif" />
+</div>
+
+
+<script src="~/Scripts/Views/Pet/Lista.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        Lista.Initialize('@ViewBag.API_URL', '@ViewBag.UsuarioID');
+    });
+</script>

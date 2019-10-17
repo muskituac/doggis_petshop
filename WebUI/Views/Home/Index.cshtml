@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+<div class="modal" tabindex="-1" role="dialog" id="content_modal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <img src="~/Content/images/loader.gif" />
+                <p>Aguarde enquanto encontramos seu registro de usuário...</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/Views/Home/Index.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        Index.Initialize('@ViewBag.API_URL');
+    });
+</script>

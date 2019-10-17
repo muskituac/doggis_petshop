@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+    ViewBag.Title = "Serviço - Cadastro";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Home/IndexAdministrador?usuario_id=@ViewBag.UsuarioID">Home</a></li>
+        <li class="breadcrumb-item"><a href="~/Servico/Lista?usuario_id=@ViewBag.UsuarioID">Serviços</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Cadastro</li>
+    </ol>
+</nav>
+
+<div class="jumbotron">
+    <h3>Cadastro de serviços</h3>
+    <p class="lead">
+        Cadastro de novos serviços.
+    </p>
+    <hr class="my-4">
+    <p>Para acessar a lista dos serviços cadastros clique no botão abaixo.</p>
+    <a class="btn btn-primary" href="~/Servico/Lista?usuario_id=@ViewBag.UsuarioID" role="button">Ir para lista de serviços</a>
+</div>
+
+<form>
+    <div class="form-group row">
+        <label for="servico_id" class="col-sm-2 col-form-label">Codigo:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="servico_id" placeholder="" values="" readonly disabled>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="servico_nome" class="col-sm-2 col-form-label">Nome:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="servico_nome" placeholder="Informe o nome do serviço">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="servico_descricao" class="col-sm-2 col-form-label">Descrição:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="servico_descricao">
+            </textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="servico_valor_atual" class="col-sm-2 col-form-label">Valor atual:</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="servico_valor_atual" placeholder="Informe o valor do serviço">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="servico_tempo" class="col-sm-2 col-form-label">Tempo de execução:</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="servico_tempo" placeholder="Informe o tempo de execução do serviço">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="servico_pataz_bonus" class="col-sm-2 col-form-label">PATAZ <small>(bônus)</small>:</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="servico_pataz_bonus" placeholder="Informe o bônus em PATAZ">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="servico_pataz_custo" class="col-sm-2 col-form-label">PATAZ <small>(custo)</small>:</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="servico_pataz_custo" placeholder="Informe o custo em PATAZ">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="servico_tipo_executante" class="col-sm-2 col-form-label">Tipo de executante:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="servico_tipo_executante">
+                <option value="">Selecione um tipo de executante...</option>
+                <option value="1">Atendente</option>
+                <option value="2">Veterinário</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="servico_ultima_alteracao" class="col-sm-2 col-form-label">Ultima alteração:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="servico_ultima_alteracao" value="@DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")" readonly disabled>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="servico_responsavel" class="col-sm-2 col-form-label">Responsável:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="servico_responsavel" value="" readonly disabled>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="servico_produtos_content" class="col-sm-2 col-form-label">Produtos necessários para a execução do serviço:</label>
+        <div class="col-sm-10" id="servico_produtos_content">
+
+        </div>
+    </div>
+
+    <div class="form-group row p-3" id="content_form_button">
+        <a href="javascript:void(0);" class="btn btn-success mr-2" id="btn_servico_salvar">Salvar</a>
+        <a href="javascript:void(0);" class="btn btn-danger" id="btn_servico_cancelar">Cancelar</a>
+    </div>
+
+    <div class="form-group row d-none" id="content_form_message">
+        <label class="alert alert-success d-none" id="message_success">
+            Serviço salvo com sucesso. Clique <a href="~/Servico/Cadastro?usuario_id=@ViewBag.UsuarioID">aqui</a> para realizar um novo cadastro.
+        </label>
+        <label class="alert alert-danger d-none" id="message_fail">Falha ao registrar o serviço.</label>
+    </div>
+
+    <div class="form-group row d-none" id="content_form_loader">
+        <img src="~/Content/images/loader.gif" />
+    </div>
+</form>
+
+<script src="~/Scripts/ViewModel/ViewModelCadastroServico.js"></script>
+<script src="~/Scripts/ViewModel/ViewModelCadastroServicoProduto.js"></script>
+<script src="~/Scripts/Views/Servico/Cadastro.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        Cadastro.Initialize('@ViewBag.API_URL', '@ViewBag.UsuarioID');
+    });
+</script>

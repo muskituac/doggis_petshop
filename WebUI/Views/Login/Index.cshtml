@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="jumbotron">
+
+    <div class="row">
+        <div class="col-2 tex">
+            <img src="~/Content/images/logo.jpg" class="logo" alt="Doggis PethShop">
+        </div>
+        <div class="col">
+            <h1 class="display-4">Doggis PetShop</h1>
+            <p class="lead">Bem vindo ao sistema de gestão Doggis Petshop.</p>
+        </div>
+    </div>
+
+    <hr class="my-4">
+    <p>Entre com seu nome de usuário e senha para acessar o sistema.</p>
+
+    <form>
+        <div class="form-group">
+            <input type="text" class="form-control" id="login_usuario" name="login_usuario" aria-describedby="login_usuario_help" placeholder="Login">
+            <small id="login_usuario_help" class="form-text text-muted">Digite seu nome de usuário.</small>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="login_senha" name="login_senha" aria-describedby="login_senha_help" placeholder="Senha">
+            <small id="login_senha_help" class="form-text text-muted">Digite a senha de acesso do seu usuário.</small>
+        </div>
+
+        <a href="javascript:void(0)" class="btn btn-primary" id="btn_entrar">Entrar</a>
+        <img src="~/Content/images/loader.gif" class="d-none" id="form_loader">
+        <label class="alert alert-danger d-none" id="alert_error">Usuário não encontrado. Por gentileza, tente novamente.</label>
+    </form>
+
+</div>
+
+
+
+<script src="~/Scripts/ViewModel/ViewModelLogin.js"></script>
+<script src="~/Scripts/Views/Login/Index.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        Index.Initialize('@ViewBag.API_URL');
+    });
+</script>

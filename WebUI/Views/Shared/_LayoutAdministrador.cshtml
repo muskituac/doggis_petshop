@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Doggis Pet Shop</title>
+
+    <!--jQuery-->
+    <script src="~/Scripts/imports/jquery-3.4.1/jquery-3.4.1.js"></script>
+    <!--jQuery - MASK -->
+    <script src="~/Scripts/imports/jquery-mask/jquery.mask.js"></script>
+    <!--Bootstrap-->
+    <link rel="stylesheet" type="text/css" href="~/Scripts/imports/bootstrap-4.3.1/dist/css/bootstrap.css">
+    <script src="~/Scripts/imports/bootstrap-4.3.1/dist/js/bootstrap.js"></script>
+    <!-- Local css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    <!-- Local js -->
+    <link rel="stylesheet" type="text/css" href="~/Scripts/Site.js">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-primary text-white mb-3">
+        <a class="navbar-brand" href="#">
+            <img src="~/Content/images/logo.jpg" width="30" height="30" alt="">
+            <span class="text-white">Doggis PetShop</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="~/Home/IndexAdministrador?usuario_id=@ViewBag.UsuarioID">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Vendas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Agendamentos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <h6 class="dropdown-header">Controle de agendamentos</h6>
+                        <a class="dropdown-item active" href="~/Agendamento/Cadastro?usuario_id=@ViewBag.UsuarioID">Novo agendamento</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="~/Agendamento/Lista?usuario_id=@ViewBag.UsuarioID">Lista de agendamentos</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Produtos & Serviços
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <h6 class="dropdown-header">Controle de produtos & serviços</h6>
+                        <a class="dropdown-item active" href="~/Produto/Cadastro?usuario_id=@ViewBag.UsuarioID">Novo produto</a>
+                        <a class="dropdown-item active" href="~/Servico/Cadastro?usuario_id=@ViewBag.UsuarioID">Novo serviço</a>
+                        <a class="dropdown-item active" href="~/Promocao/Cadastro?usuario_id=@ViewBag.UsuarioID">Nova promoção</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="~/Produto/Lista?usuario_id=@ViewBag.UsuarioID">Lista de produtos</a>
+                        <a class="dropdown-item" href="~/Servico/Lista?usuario_id=@ViewBag.UsuarioID">Lista de servicos</a>
+                        <a class="dropdown-item" href="~/Promocao/Lista?usuario_id=@ViewBag.UsuarioID">Lista de promoções</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pessoal
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <h6 class="dropdown-header">Controle de pessoal</h6>
+                        <a class="dropdown-item active" href="~/Usuario/Cadastro?usuario_id=@ViewBag.UsuarioID">Novo usuário</a>
+                        <a class="dropdown-item active" href="~/Funcionario/Cadastro?usuario_id=@ViewBag.UsuarioID">Novo funcionário</a>
+                        <a class="dropdown-item active" href="~/Atendente/Cadastro?usuario_id=@ViewBag.UsuarioID">Novo atendente</a>
+                        <a class="dropdown-item active" href="~/Veterinario/Cadastro?usuario_id=@ViewBag.UsuarioID">Novo veterinário</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="~/Usuario/Lista?usuario_id=@ViewBag.UsuarioID">Lista de usuário</a>
+                        <a class="dropdown-item" href="~/Funcionario/Lista?usuario_id=@ViewBag.UsuarioID">Lista de funcionários</a>
+                        <a class="dropdown-item" href="~/Atendente/Lista?usuario_id=@ViewBag.UsuarioID">Lista de atendentes</a>
+                        <a class="dropdown-item" href="~/Veterinario/Lista?usuario_id=@ViewBag.UsuarioID">Lista de veterinários</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Clientes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <h6 class="dropdown-header">Controle de clientes</h6>
+                        <a class="dropdown-item active" href="~/Cliente/Cadastro?usuario_id=@ViewBag.UsuarioID">Novo cliente</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="~/Cliente/Lista?usuario_id=@ViewBag.UsuarioID">Lista de clientes</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pets
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <h6 class="dropdown-header">Controle de pets</h6>
+                        <a class="dropdown-item active" href="~/Pet/Cadastro?usuario_id=@ViewBag.UsuarioID">Novo pet</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="~/Pet/Lista?usuario_id=@ViewBag.UsuarioID">Lista de pets</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Estoque
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <h6 class="dropdown-header">Controle de estoque</h6>
+                        <a class="dropdown-item active" href="~/Estoque/Entrada?usuario_id=@ViewBag.UsuarioID">Nova entrada</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="~/Estoque/Lista?usuario_id=@ViewBag.UsuarioID">Lista de entradas</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-warning" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pataz
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse  float-right">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="~/"><small>Sair</small></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container body-content mt-5 mb-5 p-3">
+        @RenderBody()
+    </div>
+
+    @*<div class="fixed-bottom container-fluid mt-5 p-1 bg-light">
+            <footer>
+                <p><small class="text-muted">&copy; @DateTime.Now.Year - Doggis Pet Shop - By Fabrício A. da Costa</small></p>
+            </footer>
+        </div>*@
+
+    <div id="content_modal"></div>
+</body>
+</html>
+
+<script src="~/Scripts/Views/Layout/_LayoutAdministrador.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        _LayoutAdministrador.Initialize('@ViewBag.API_URL', '@ViewBag.UsuarioID');
+    });
+</script>
