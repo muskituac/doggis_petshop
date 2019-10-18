@@ -1,0 +1,978 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="doggis_db_data_model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="agendamento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cliente" Type="Int32" Nullable="false" />
+    <Property Name="id_pet" Type="Int32" Nullable="false" />
+    <Property Name="id_servico" Type="Int32" Nullable="false" />
+    <Property Name="id_funcionario" Type="Int32" Nullable="false" />
+    <Property Name="data_inicio" Type="DateTime" Nullable="false" />
+    <Property Name="data_termino" Type="DateTime" Nullable="false" />
+    <Property Name="notificacao_enviada" Type="Boolean" Nullable="false" />
+    <Property Name="canelamento" Type="Boolean" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cliente" Relationship="Self.fk_agendamento_cliente" FromRole="agendamento" ToRole="cliente" />
+    <NavigationProperty Name="funcionario" Relationship="Self.fk_agendamento_funcionario" FromRole="agendamento" ToRole="funcionario" />
+    <NavigationProperty Name="pet" Relationship="Self.fk_agendamento_pet" FromRole="agendamento" ToRole="pet" />
+    <NavigationProperty Name="servico" Relationship="Self.fk_agendamento_servico" FromRole="agendamento" ToRole="servico" />
+  </EntityType>
+  <EntityType Name="atendente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_funcionario" Type="Int32" Nullable="false" />
+    <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="funcionario" Relationship="Self.fk_atendente_funcionario" FromRole="atendente" ToRole="funcionario" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="identidade" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cpf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="endereco" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="agendamento" Relationship="Self.fk_agendamento_cliente" FromRole="cliente" ToRole="agendamento" />
+    <NavigationProperty Name="cliente_pataz_entrada_produto" Relationship="Self.fk_cliente_pataz_entrada_produto_cliente" FromRole="cliente" ToRole="cliente_pataz_entrada_produto" />
+    <NavigationProperty Name="cliente_pataz_entrada_servico" Relationship="Self.fk_cliente_pataz_entrada_servico_cliente" FromRole="cliente" ToRole="cliente_pataz_entrada_servico" />
+    <NavigationProperty Name="cliente_pataz_saida_produto" Relationship="Self.fk_cliente_pataz_saida_produto_cliente" FromRole="cliente" ToRole="cliente_pataz_saida_produto" />
+    <NavigationProperty Name="cliente_pataz_saida_servico" Relationship="Self.fk_cliente_pataz_saida_servico_cliente" FromRole="cliente" ToRole="cliente_pataz_saida_servico" />
+    <NavigationProperty Name="pet" Relationship="Self.fk_pet_cliente" FromRole="cliente" ToRole="pet" />
+  </EntityType>
+  <EntityType Name="cliente_pataz_entrada_produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id_cliente" Type="Int32" Nullable="false" />
+    <Property Name="quantidade" Type="Int32" Nullable="false" />
+    <Property Name="id_venda_produto" Type="Int32" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cliente" Relationship="Self.fk_cliente_pataz_entrada_produto_cliente" FromRole="cliente_pataz_entrada_produto" ToRole="cliente" />
+    <NavigationProperty Name="venda_produto" Relationship="Self.fk_cliente_pataz_entrada_produto_venda_produto" FromRole="cliente_pataz_entrada_produto" ToRole="venda_produto" />
+  </EntityType>
+  <EntityType Name="cliente_pataz_entrada_servico">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cliente" Type="Int32" Nullable="false" />
+    <Property Name="quantidade" Type="Int32" Nullable="false" />
+    <Property Name="id_venda_servico" Type="Int32" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cliente" Relationship="Self.fk_cliente_pataz_entrada_servico_cliente" FromRole="cliente_pataz_entrada_servico" ToRole="cliente" />
+    <NavigationProperty Name="venda_servico" Relationship="Self.fk_cliente_pataz_entrada_servico_venda_servico" FromRole="cliente_pataz_entrada_servico" ToRole="venda_servico" />
+  </EntityType>
+  <EntityType Name="cliente_pataz_saida_produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cliente" Type="Int32" Nullable="false" />
+    <Property Name="quantidade" Type="Int32" Nullable="false" />
+    <Property Name="id_venda_produto_pagamento" Type="Int32" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cliente" Relationship="Self.fk_cliente_pataz_saida_produto_cliente" FromRole="cliente_pataz_saida_produto" ToRole="cliente" />
+    <NavigationProperty Name="venda_produto_pagamento" Relationship="Self.fk_cliente_pataz_saida_produto_venda_produto_pagamento" FromRole="cliente_pataz_saida_produto" ToRole="venda_produto_pagamento" />
+  </EntityType>
+  <EntityType Name="cliente_pataz_saida_servico">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cliente" Type="Int32" Nullable="false" />
+    <Property Name="quantidade" Type="Int32" Nullable="false" />
+    <Property Name="id_venda_servico_pagamento" Type="Int32" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cliente" Relationship="Self.fk_cliente_pataz_saida_servico_cliente" FromRole="cliente_pataz_saida_servico" ToRole="cliente" />
+    <NavigationProperty Name="venda_servico_pagamento" Relationship="Self.fk_cliente_pataz_saida_servico_venda_servico_pagamento" FromRole="cliente_pataz_saida_servico" ToRole="venda_servico_pagamento" />
+  </EntityType>
+  <EntityType Name="estoque_entrada">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_produto" Type="Int32" Nullable="false" />
+    <Property Name="quantidade" Type="Int32" Nullable="false" />
+    <Property Name="data" Type="DateTime" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="produto" Relationship="Self.fk_estoque_entrada_produot" FromRole="estoque_entrada" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="estoque_saida">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_produto" Type="Int32" Nullable="false" />
+    <Property Name="quantidade" Type="Int32" Nullable="false" />
+    <Property Name="data" Type="DateTime" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="produto" Relationship="Self.fk_estoque_saida_produto" FromRole="estoque_saida" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="funcionario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="agendamento" Relationship="Self.fk_agendamento_funcionario" FromRole="funcionario" ToRole="agendamento" />
+    <NavigationProperty Name="atendente" Relationship="Self.fk_atendente_funcionario" FromRole="funcionario" ToRole="atendente" />
+    <NavigationProperty Name="veterinario" Relationship="Self.fk_veterinario_funcionario" FromRole="funcionario" ToRole="veterinario" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="usuario" Relationship="doggis_db_data_model.fk_funcionario_usuario" FromRole="funcionario" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="pet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_pet_tipo" Type="Int32" Nullable="false" />
+    <Property Name="id_cliete" Type="Int32" Nullable="false" />
+    <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="raca" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="porte" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="alergias" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="observacao" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="ultima_alteraco" Type="DateTime" />
+    <Property Name="respnsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="agendamento" Relationship="Self.fk_agendamento_pet" FromRole="pet" ToRole="agendamento" />
+    <NavigationProperty Name="cliente" Relationship="Self.fk_pet_cliente" FromRole="pet" ToRole="cliente" />
+    <NavigationProperty Name="pet_tipo" Relationship="Self.fk_pet_pet_tipo" FromRole="pet" ToRole="pet_tipo" />
+    <NavigationProperty Name="venda_servico" Relationship="Self.fk_venda_servico_pet" FromRole="pet" ToRole="venda_servico" />
+  </EntityType>
+  <EntityType Name="pet_tipo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="pet" Relationship="Self.fk_pet_pet_tipo" FromRole="pet_tipo" ToRole="pet" />
+    <NavigationProperty Name="veterinario_pet_tipo" Relationship="Self.fk_veterinario_pet_tipo_pet_tipo" FromRole="pet_tipo" ToRole="veterinario_pet_tipo" />
+  </EntityType>
+  <EntityType Name="produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fabricante" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="especificacoes" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="valor_atual" Type="Decimal" />
+    <Property Name="pataz_bonus" Type="Int32" />
+    <Property Name="pataz_custo" Type="Int32" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responasvel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="estoque_entrada" Relationship="Self.fk_estoque_entrada_produot" FromRole="produto" ToRole="estoque_entrada" />
+    <NavigationProperty Name="estoque_saida" Relationship="Self.fk_estoque_saida_produto" FromRole="produto" ToRole="estoque_saida" />
+    <NavigationProperty Name="promocao_produto" Relationship="Self.fk_promocao_produto_produto" FromRole="produto" ToRole="promocao_produto" />
+    <NavigationProperty Name="servico_produto" Relationship="Self.fk_servico_produto_produto" FromRole="produto" ToRole="servico_produto" />
+    <NavigationProperty Name="venda_produto" Relationship="Self.fk_venda_produto_produto" FromRole="produto" ToRole="venda_produto" />
+  </EntityType>
+  <EntityType Name="promocao">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="porcentagem" Type="Int32" Nullable="false" />
+    <Property Name="data_inicio" Type="DateTime" Nullable="false" />
+    <Property Name="data_termino" Type="DateTime" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="promocao_produto" Relationship="Self.fk_promocao_produto_promocao" FromRole="promocao" ToRole="promocao_produto" />
+    <NavigationProperty Name="promocao_servico" Relationship="Self.fk_promocao_servico_promocao" FromRole="promocao" ToRole="promocao_servico" />
+  </EntityType>
+  <EntityType Name="promocao_produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_promocao" Type="Int32" Nullable="false" />
+    <Property Name="id_produto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="produto" Relationship="Self.fk_promocao_produto_produto" FromRole="promocao_produto" ToRole="produto" />
+    <NavigationProperty Name="promocao" Relationship="Self.fk_promocao_produto_promocao" FromRole="promocao_produto" ToRole="promocao" />
+  </EntityType>
+  <EntityType Name="promocao_servico">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_promocao" Type="Int32" Nullable="false" />
+    <Property Name="id_servico" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="promocao" Relationship="Self.fk_promocao_servico_promocao" FromRole="promocao_servico" ToRole="promocao" />
+    <NavigationProperty Name="servico" Relationship="Self.fk_promocao_servico_servico" FromRole="promocao_servico" ToRole="servico" />
+  </EntityType>
+  <EntityType Name="servico">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_executante" Type="Boolean" Nullable="false" />
+    <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descricao" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="valor_atual" Type="Decimal" />
+    <Property Name="tempo" Type="Int32" />
+    <Property Name="pataz_bonus" Type="Int32" />
+    <Property Name="pataz_custo" Type="Int32" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="respnsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="agendamento" Relationship="Self.fk_agendamento_servico" FromRole="servico" ToRole="agendamento" />
+    <NavigationProperty Name="promocao_servico" Relationship="Self.fk_promocao_servico_servico" FromRole="servico" ToRole="promocao_servico" />
+    <NavigationProperty Name="servico_produto" Relationship="Self.fk_servico_produto_servico" FromRole="servico" ToRole="servico_produto" />
+    <NavigationProperty Name="venda_servico" Relationship="Self.fk_venda_servico_servico" FromRole="servico" ToRole="venda_servico" />
+  </EntityType>
+  <EntityType Name="servico_produto">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="id_servico" />
+      <PropertyRef Name="id_produto" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_servico" Type="Int32" Nullable="false" />
+    <Property Name="id_produto" Type="Int32" Nullable="false" />
+    <Property Name="quantidade" Type="Int32" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="produto" Relationship="Self.fk_servico_produto_produto" FromRole="servico_produto" ToRole="produto" />
+    <NavigationProperty Name="servico" Relationship="Self.fk_servico_produto_servico" FromRole="servico_produto" ToRole="servico" />
+  </EntityType>
+  <EntityType Name="servico_valor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_servico" Type="Int32" Nullable="false" />
+    <Property Name="valor" Type="Decimal" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="usuario_tipo" Type="Int32" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="senha" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ultimo_acesso" Type="DateTime" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" Nullable="false" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="usuario_tipo1" Relationship="Self.fk_usuario_usuario_tipo" FromRole="usuario" ToRole="usuario_tipo" />
+    <NavigationProperty Name="funcionario" Relationship="doggis_db_data_model.fk_funcionario_usuario" FromRole="usuario" ToRole="funcionario" />
+  </EntityType>
+  <EntityType Name="usuario_tipo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="usuario" Relationship="Self.fk_usuario_usuario_tipo" FromRole="usuario_tipo" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="venda">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="data" Type="DateTime" Nullable="false" />
+    <Property Name="id_cliente" Type="Int32" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="venda_produto" Relationship="Self.fk_venda_produto_venda" FromRole="venda" ToRole="venda_produto" />
+    <NavigationProperty Name="venda_servico" Relationship="Self.fk_venda_servico_venda" FromRole="venda" ToRole="venda_servico" />
+  </EntityType>
+  <EntityType Name="venda_produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_venda" Type="Int32" Nullable="false" />
+    <Property Name="id_produto" Type="Int32" Nullable="false" />
+    <Property Name="quantidade" Type="Int32" Nullable="false" />
+    <Property Name="valor_unitario" Type="Decimal" Nullable="false" />
+    <Property Name="valor_unitario_pataz" Type="Int32" Nullable="false" />
+    <Property Name="valor_total" Type="Decimal" Nullable="false" />
+    <Property Name="valor_total_pataz" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cliente_pataz_entrada_produto" Relationship="Self.fk_cliente_pataz_entrada_produto_venda_produto" FromRole="venda_produto" ToRole="cliente_pataz_entrada_produto" />
+    <NavigationProperty Name="produto" Relationship="Self.fk_venda_produto_produto" FromRole="venda_produto" ToRole="produto" />
+    <NavigationProperty Name="venda" Relationship="Self.fk_venda_produto_venda" FromRole="venda_produto" ToRole="venda" />
+    <NavigationProperty Name="venda_produto_pagamento" Relationship="Self.fk_venda_produto_pagamento_venda_produto" FromRole="venda_produto" ToRole="venda_produto_pagamento" />
+  </EntityType>
+  <EntityType Name="venda_produto_pagamento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_venda_produto" Type="Int32" Nullable="false" />
+    <Property Name="valor_total" Type="Decimal" />
+    <Property Name="valor_total_pataz" Type="Int32" />
+    <NavigationProperty Name="cliente_pataz_saida_produto" Relationship="Self.fk_cliente_pataz_saida_produto_venda_produto_pagamento" FromRole="venda_produto_pagamento" ToRole="cliente_pataz_saida_produto" />
+    <NavigationProperty Name="venda_produto" Relationship="Self.fk_venda_produto_pagamento_venda_produto" FromRole="venda_produto_pagamento" ToRole="venda_produto" />
+  </EntityType>
+  <EntityType Name="venda_servico">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_venda" Type="Int32" Nullable="false" />
+    <Property Name="id_servico" Type="Int32" Nullable="false" />
+    <Property Name="id_pet" Type="Int32" Nullable="false" />
+    <Property Name="quantidade" Type="Int32" Nullable="false" />
+    <Property Name="valor_unitario" Type="Decimal" Nullable="false" />
+    <Property Name="valor_unitario_pataz" Type="Int32" Nullable="false" />
+    <Property Name="valor_total" Type="Decimal" Nullable="false" />
+    <Property Name="valor_total_pataz" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cliente_pataz_entrada_servico" Relationship="Self.fk_cliente_pataz_entrada_servico_venda_servico" FromRole="venda_servico" ToRole="cliente_pataz_entrada_servico" />
+    <NavigationProperty Name="pet" Relationship="Self.fk_venda_servico_pet" FromRole="venda_servico" ToRole="pet" />
+    <NavigationProperty Name="servico" Relationship="Self.fk_venda_servico_servico" FromRole="venda_servico" ToRole="servico" />
+    <NavigationProperty Name="venda" Relationship="Self.fk_venda_servico_venda" FromRole="venda_servico" ToRole="venda" />
+    <NavigationProperty Name="venda_servico_pagamento" Relationship="Self.fk_venda_servico_pagamento_venda_servico" FromRole="venda_servico" ToRole="venda_servico_pagamento" />
+  </EntityType>
+  <EntityType Name="venda_servico_pagamento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_venda_servico" Type="Int32" Nullable="false" />
+    <Property Name="valor_total" Type="Decimal" />
+    <Property Name="valor_total_pataz" Type="Int32" />
+    <NavigationProperty Name="cliente_pataz_saida_servico" Relationship="Self.fk_cliente_pataz_saida_servico_venda_servico_pagamento" FromRole="venda_servico_pagamento" ToRole="cliente_pataz_saida_servico" />
+    <NavigationProperty Name="venda_servico" Relationship="Self.fk_venda_servico_pagamento_venda_servico" FromRole="venda_servico_pagamento" ToRole="venda_servico" />
+  </EntityType>
+  <EntityType Name="veterinario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_funcionario" Type="Int32" Nullable="false" />
+    <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cpf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="identidade" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="registro" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ultima_alteracao" Type="DateTime" />
+    <Property Name="responsavel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="funcionario" Relationship="Self.fk_veterinario_funcionario" FromRole="veterinario" ToRole="funcionario" />
+    <NavigationProperty Name="veterinario_pet_tipo" Relationship="Self.fk_veterinario_pet_tipo_veterinario" FromRole="veterinario" ToRole="veterinario_pet_tipo" />
+  </EntityType>
+  <EntityType Name="veterinario_pet_tipo">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="id_veterinario" />
+      <PropertyRef Name="id_pet_tipo" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_veterinario" Type="Int32" Nullable="false" />
+    <Property Name="id_pet_tipo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="pet_tipo" Relationship="Self.fk_veterinario_pet_tipo_pet_tipo" FromRole="veterinario_pet_tipo" ToRole="pet_tipo" />
+    <NavigationProperty Name="veterinario" Relationship="Self.fk_veterinario_pet_tipo_veterinario" FromRole="veterinario_pet_tipo" ToRole="veterinario" />
+  </EntityType>
+  <Association Name="fk_agendamento_cliente">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="agendamento" Type="Self.agendamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="agendamento">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_agendamento_funcionario">
+    <End Role="funcionario" Type="Self.funcionario" Multiplicity="1" />
+    <End Role="agendamento" Type="Self.agendamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="funcionario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="agendamento">
+        <PropertyRef Name="id_funcionario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_agendamento_pet">
+    <End Role="pet" Type="Self.pet" Multiplicity="1" />
+    <End Role="agendamento" Type="Self.agendamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pet">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="agendamento">
+        <PropertyRef Name="id_pet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_agendamento_servico">
+    <End Role="servico" Type="Self.servico" Multiplicity="1" />
+    <End Role="agendamento" Type="Self.agendamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="servico">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="agendamento">
+        <PropertyRef Name="id_servico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_atendente_funcionario">
+    <End Role="funcionario" Type="Self.funcionario" Multiplicity="1" />
+    <End Role="atendente" Type="Self.atendente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="funcionario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="atendente">
+        <PropertyRef Name="id_funcionario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_pataz_entrada_produto_cliente">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="cliente_pataz_entrada_produto" Type="Self.cliente_pataz_entrada_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente_pataz_entrada_produto">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_pataz_entrada_servico_cliente">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="cliente_pataz_entrada_servico" Type="Self.cliente_pataz_entrada_servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente_pataz_entrada_servico">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_pataz_saida_produto_cliente">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="cliente_pataz_saida_produto" Type="Self.cliente_pataz_saida_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente_pataz_saida_produto">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_pataz_saida_servico_cliente">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="cliente_pataz_saida_servico" Type="Self.cliente_pataz_saida_servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente_pataz_saida_servico">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_pet_cliente">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="pet" Type="Self.pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pet">
+        <PropertyRef Name="id_cliete" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_pataz_entrada_produto_venda_produto">
+    <End Role="venda_produto" Type="Self.venda_produto" Multiplicity="1" />
+    <End Role="cliente_pataz_entrada_produto" Type="Self.cliente_pataz_entrada_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venda_produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente_pataz_entrada_produto">
+        <PropertyRef Name="id_venda_produto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_pataz_entrada_servico_venda_servico">
+    <End Role="venda_servico" Type="Self.venda_servico" Multiplicity="1" />
+    <End Role="cliente_pataz_entrada_servico" Type="Self.cliente_pataz_entrada_servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venda_servico">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente_pataz_entrada_servico">
+        <PropertyRef Name="id_venda_servico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_pataz_saida_produto_venda_produto_pagamento">
+    <End Role="venda_produto_pagamento" Type="Self.venda_produto_pagamento" Multiplicity="1" />
+    <End Role="cliente_pataz_saida_produto" Type="Self.cliente_pataz_saida_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venda_produto_pagamento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente_pataz_saida_produto">
+        <PropertyRef Name="id_venda_produto_pagamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_pataz_saida_servico_venda_servico_pagamento">
+    <End Role="venda_servico_pagamento" Type="Self.venda_servico_pagamento" Multiplicity="1" />
+    <End Role="cliente_pataz_saida_servico" Type="Self.cliente_pataz_saida_servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venda_servico_pagamento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente_pataz_saida_servico">
+        <PropertyRef Name="id_venda_servico_pagamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_estoque_entrada_produot">
+    <End Role="produto" Type="Self.produto" Multiplicity="1" />
+    <End Role="estoque_entrada" Type="Self.estoque_entrada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="estoque_entrada">
+        <PropertyRef Name="id_produto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_estoque_saida_produto">
+    <End Role="produto" Type="Self.produto" Multiplicity="1" />
+    <End Role="estoque_saida" Type="Self.estoque_saida" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="estoque_saida">
+        <PropertyRef Name="id_produto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_veterinario_funcionario">
+    <End Role="funcionario" Type="Self.funcionario" Multiplicity="1" />
+    <End Role="veterinario" Type="Self.veterinario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="funcionario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="veterinario">
+        <PropertyRef Name="id_funcionario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_pet_pet_tipo">
+    <End Role="pet_tipo" Type="Self.pet_tipo" Multiplicity="1" />
+    <End Role="pet" Type="Self.pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pet_tipo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pet">
+        <PropertyRef Name="id_pet_tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venda_servico_pet">
+    <End Role="pet" Type="Self.pet" Multiplicity="1" />
+    <End Role="venda_servico" Type="Self.venda_servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pet">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="venda_servico">
+        <PropertyRef Name="id_pet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_veterinario_pet_tipo_pet_tipo">
+    <End Role="pet_tipo" Type="Self.pet_tipo" Multiplicity="1" />
+    <End Role="veterinario_pet_tipo" Type="Self.veterinario_pet_tipo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pet_tipo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="veterinario_pet_tipo">
+        <PropertyRef Name="id_pet_tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_promocao_produto_produto">
+    <End Role="produto" Type="Self.produto" Multiplicity="1" />
+    <End Role="promocao_produto" Type="Self.promocao_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promocao_produto">
+        <PropertyRef Name="id_produto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_servico_produto_produto">
+    <End Role="produto" Type="Self.produto" Multiplicity="1" />
+    <End Role="servico_produto" Type="Self.servico_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="servico_produto">
+        <PropertyRef Name="id_produto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venda_produto_produto">
+    <End Role="produto" Type="Self.produto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="venda_produto" Type="Self.venda_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="venda_produto">
+        <PropertyRef Name="id_produto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_promocao_produto_promocao">
+    <End Role="promocao" Type="Self.promocao" Multiplicity="1" />
+    <End Role="promocao_produto" Type="Self.promocao_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promocao">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promocao_produto">
+        <PropertyRef Name="id_promocao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_promocao_servico_promocao">
+    <End Role="promocao" Type="Self.promocao" Multiplicity="1" />
+    <End Role="promocao_servico" Type="Self.promocao_servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promocao">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promocao_servico">
+        <PropertyRef Name="id_promocao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_promocao_servico_servico">
+    <End Role="servico" Type="Self.servico" Multiplicity="1" />
+    <End Role="promocao_servico" Type="Self.promocao_servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="servico">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promocao_servico">
+        <PropertyRef Name="id_servico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_servico_produto_servico">
+    <End Role="servico" Type="Self.servico" Multiplicity="1" />
+    <End Role="servico_produto" Type="Self.servico_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="servico">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="servico_produto">
+        <PropertyRef Name="id_servico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venda_servico_servico">
+    <End Role="servico" Type="Self.servico" Multiplicity="1" />
+    <End Role="venda_servico" Type="Self.venda_servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="servico">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="venda_servico">
+        <PropertyRef Name="id_servico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_usuario_tipo">
+    <End Role="usuario_tipo" Type="Self.usuario_tipo" Multiplicity="1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario_tipo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="usuario_tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venda_produto_venda">
+    <End Role="venda" Type="Self.venda" Multiplicity="1" />
+    <End Role="venda_produto" Type="Self.venda_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venda">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="venda_produto">
+        <PropertyRef Name="id_venda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venda_servico_venda">
+    <End Role="venda" Type="Self.venda" Multiplicity="1" />
+    <End Role="venda_servico" Type="Self.venda_servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venda">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="venda_servico">
+        <PropertyRef Name="id_venda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venda_produto_pagamento_venda_produto">
+    <End Role="venda_produto" Type="Self.venda_produto" Multiplicity="1" />
+    <End Role="venda_produto_pagamento" Type="Self.venda_produto_pagamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venda_produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="venda_produto_pagamento">
+        <PropertyRef Name="id_venda_produto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venda_servico_pagamento_venda_servico">
+    <End Role="venda_servico" Type="Self.venda_servico" Multiplicity="1" />
+    <End Role="venda_servico_pagamento" Type="Self.venda_servico_pagamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venda_servico">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="venda_servico_pagamento">
+        <PropertyRef Name="id_venda_servico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_veterinario_pet_tipo_veterinario">
+    <End Role="veterinario" Type="Self.veterinario" Multiplicity="1" />
+    <End Role="veterinario_pet_tipo" Type="Self.veterinario_pet_tipo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="veterinario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="veterinario_pet_tipo">
+        <PropertyRef Name="id_veterinario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="doggis_dbEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="agendamento" EntityType="Self.agendamento" />
+    <EntitySet Name="atendente" EntityType="Self.atendente" />
+    <EntitySet Name="cliente" EntityType="Self.cliente" />
+    <EntitySet Name="cliente_pataz_entrada_produto" EntityType="Self.cliente_pataz_entrada_produto" />
+    <EntitySet Name="cliente_pataz_entrada_servico" EntityType="Self.cliente_pataz_entrada_servico" />
+    <EntitySet Name="cliente_pataz_saida_produto" EntityType="Self.cliente_pataz_saida_produto" />
+    <EntitySet Name="cliente_pataz_saida_servico" EntityType="Self.cliente_pataz_saida_servico" />
+    <EntitySet Name="estoque_entrada" EntityType="Self.estoque_entrada" />
+    <EntitySet Name="estoque_saida" EntityType="Self.estoque_saida" />
+    <EntitySet Name="funcionario" EntityType="Self.funcionario" />
+    <EntitySet Name="pet" EntityType="Self.pet" />
+    <EntitySet Name="pet_tipo" EntityType="Self.pet_tipo" />
+    <EntitySet Name="produto" EntityType="Self.produto" />
+    <EntitySet Name="promocao" EntityType="Self.promocao" />
+    <EntitySet Name="promocao_produto" EntityType="Self.promocao_produto" />
+    <EntitySet Name="promocao_servico" EntityType="Self.promocao_servico" />
+    <EntitySet Name="servico" EntityType="Self.servico" />
+    <EntitySet Name="servico_produto" EntityType="Self.servico_produto" />
+    <EntitySet Name="servico_valor" EntityType="Self.servico_valor" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" />
+    <EntitySet Name="usuario_tipo" EntityType="Self.usuario_tipo" />
+    <EntitySet Name="venda" EntityType="Self.venda" />
+    <EntitySet Name="venda_produto" EntityType="Self.venda_produto" />
+    <EntitySet Name="venda_produto_pagamento" EntityType="Self.venda_produto_pagamento" />
+    <EntitySet Name="venda_servico" EntityType="Self.venda_servico" />
+    <EntitySet Name="venda_servico_pagamento" EntityType="Self.venda_servico_pagamento" />
+    <EntitySet Name="veterinario" EntityType="Self.veterinario" />
+    <EntitySet Name="veterinario_pet_tipo" EntityType="Self.veterinario_pet_tipo" />
+    <AssociationSet Name="fk_agendamento_cliente" Association="Self.fk_agendamento_cliente">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="agendamento" EntitySet="agendamento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_agendamento_funcionario" Association="Self.fk_agendamento_funcionario">
+      <End Role="funcionario" EntitySet="funcionario" />
+      <End Role="agendamento" EntitySet="agendamento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_agendamento_pet" Association="Self.fk_agendamento_pet">
+      <End Role="pet" EntitySet="pet" />
+      <End Role="agendamento" EntitySet="agendamento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_agendamento_servico" Association="Self.fk_agendamento_servico">
+      <End Role="servico" EntitySet="servico" />
+      <End Role="agendamento" EntitySet="agendamento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_atendente_funcionario" Association="Self.fk_atendente_funcionario">
+      <End Role="funcionario" EntitySet="funcionario" />
+      <End Role="atendente" EntitySet="atendente" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_pataz_entrada_produto_cliente" Association="Self.fk_cliente_pataz_entrada_produto_cliente">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="cliente_pataz_entrada_produto" EntitySet="cliente_pataz_entrada_produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_pataz_entrada_servico_cliente" Association="Self.fk_cliente_pataz_entrada_servico_cliente">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="cliente_pataz_entrada_servico" EntitySet="cliente_pataz_entrada_servico" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_pataz_saida_produto_cliente" Association="Self.fk_cliente_pataz_saida_produto_cliente">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="cliente_pataz_saida_produto" EntitySet="cliente_pataz_saida_produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_pataz_saida_servico_cliente" Association="Self.fk_cliente_pataz_saida_servico_cliente">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="cliente_pataz_saida_servico" EntitySet="cliente_pataz_saida_servico" />
+    </AssociationSet>
+    <AssociationSet Name="fk_pet_cliente" Association="Self.fk_pet_cliente">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="pet" EntitySet="pet" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_pataz_entrada_produto_venda_produto" Association="Self.fk_cliente_pataz_entrada_produto_venda_produto">
+      <End Role="venda_produto" EntitySet="venda_produto" />
+      <End Role="cliente_pataz_entrada_produto" EntitySet="cliente_pataz_entrada_produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_pataz_entrada_servico_venda_servico" Association="Self.fk_cliente_pataz_entrada_servico_venda_servico">
+      <End Role="venda_servico" EntitySet="venda_servico" />
+      <End Role="cliente_pataz_entrada_servico" EntitySet="cliente_pataz_entrada_servico" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_pataz_saida_produto_venda_produto_pagamento" Association="Self.fk_cliente_pataz_saida_produto_venda_produto_pagamento">
+      <End Role="venda_produto_pagamento" EntitySet="venda_produto_pagamento" />
+      <End Role="cliente_pataz_saida_produto" EntitySet="cliente_pataz_saida_produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_pataz_saida_servico_venda_servico_pagamento" Association="Self.fk_cliente_pataz_saida_servico_venda_servico_pagamento">
+      <End Role="venda_servico_pagamento" EntitySet="venda_servico_pagamento" />
+      <End Role="cliente_pataz_saida_servico" EntitySet="cliente_pataz_saida_servico" />
+    </AssociationSet>
+    <AssociationSet Name="fk_estoque_entrada_produot" Association="Self.fk_estoque_entrada_produot">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="estoque_entrada" EntitySet="estoque_entrada" />
+    </AssociationSet>
+    <AssociationSet Name="fk_estoque_saida_produto" Association="Self.fk_estoque_saida_produto">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="estoque_saida" EntitySet="estoque_saida" />
+    </AssociationSet>
+    <AssociationSet Name="fk_veterinario_funcionario" Association="Self.fk_veterinario_funcionario">
+      <End Role="funcionario" EntitySet="funcionario" />
+      <End Role="veterinario" EntitySet="veterinario" />
+    </AssociationSet>
+    <AssociationSet Name="fk_pet_pet_tipo" Association="Self.fk_pet_pet_tipo">
+      <End Role="pet_tipo" EntitySet="pet_tipo" />
+      <End Role="pet" EntitySet="pet" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venda_servico_pet" Association="Self.fk_venda_servico_pet">
+      <End Role="pet" EntitySet="pet" />
+      <End Role="venda_servico" EntitySet="venda_servico" />
+    </AssociationSet>
+    <AssociationSet Name="fk_veterinario_pet_tipo_pet_tipo" Association="Self.fk_veterinario_pet_tipo_pet_tipo">
+      <End Role="pet_tipo" EntitySet="pet_tipo" />
+      <End Role="veterinario_pet_tipo" EntitySet="veterinario_pet_tipo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_promocao_produto_produto" Association="Self.fk_promocao_produto_produto">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="promocao_produto" EntitySet="promocao_produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_servico_produto_produto" Association="Self.fk_servico_produto_produto">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="servico_produto" EntitySet="servico_produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venda_produto_produto" Association="Self.fk_venda_produto_produto">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="venda_produto" EntitySet="venda_produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_promocao_produto_promocao" Association="Self.fk_promocao_produto_promocao">
+      <End Role="promocao" EntitySet="promocao" />
+      <End Role="promocao_produto" EntitySet="promocao_produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_promocao_servico_promocao" Association="Self.fk_promocao_servico_promocao">
+      <End Role="promocao" EntitySet="promocao" />
+      <End Role="promocao_servico" EntitySet="promocao_servico" />
+    </AssociationSet>
+    <AssociationSet Name="fk_promocao_servico_servico" Association="Self.fk_promocao_servico_servico">
+      <End Role="servico" EntitySet="servico" />
+      <End Role="promocao_servico" EntitySet="promocao_servico" />
+    </AssociationSet>
+    <AssociationSet Name="fk_servico_produto_servico" Association="Self.fk_servico_produto_servico">
+      <End Role="servico" EntitySet="servico" />
+      <End Role="servico_produto" EntitySet="servico_produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venda_servico_servico" Association="Self.fk_venda_servico_servico">
+      <End Role="servico" EntitySet="servico" />
+      <End Role="venda_servico" EntitySet="venda_servico" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_usuario_tipo" Association="Self.fk_usuario_usuario_tipo">
+      <End Role="usuario_tipo" EntitySet="usuario_tipo" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venda_produto_venda" Association="Self.fk_venda_produto_venda">
+      <End Role="venda" EntitySet="venda" />
+      <End Role="venda_produto" EntitySet="venda_produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venda_servico_venda" Association="Self.fk_venda_servico_venda">
+      <End Role="venda" EntitySet="venda" />
+      <End Role="venda_servico" EntitySet="venda_servico" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venda_produto_pagamento_venda_produto" Association="Self.fk_venda_produto_pagamento_venda_produto">
+      <End Role="venda_produto" EntitySet="venda_produto" />
+      <End Role="venda_produto_pagamento" EntitySet="venda_produto_pagamento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venda_servico_pagamento_venda_servico" Association="Self.fk_venda_servico_pagamento_venda_servico">
+      <End Role="venda_servico" EntitySet="venda_servico" />
+      <End Role="venda_servico_pagamento" EntitySet="venda_servico_pagamento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_veterinario_pet_tipo_veterinario" Association="Self.fk_veterinario_pet_tipo_veterinario">
+      <End Role="veterinario" EntitySet="veterinario" />
+      <End Role="veterinario_pet_tipo" EntitySet="veterinario_pet_tipo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_funcionario_usuario" Association="doggis_db_data_model.fk_funcionario_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="funcionario" EntitySet="funcionario" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="fk_funcionario_usuario">
+    <End Type="doggis_db_data_model.usuario" Role="usuario" Multiplicity="1" />
+    <End Type="doggis_db_data_model.funcionario" Role="funcionario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="funcionario">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

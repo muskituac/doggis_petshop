@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="doggis_dbEntities">
+    <EntitySetMapping Name="agendamento">
+      <EntityTypeMapping TypeName="Models.agendamento">
+        <MappingFragment StoreEntitySet="agendamento">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="id_pet" ColumnName="id_pet" />
+          <ScalarProperty Name="id_servico" ColumnName="id_servico" />
+          <ScalarProperty Name="id_funcionario" ColumnName="id_funcionario" />
+          <ScalarProperty Name="data_inicio" ColumnName="data_inicio" />
+          <ScalarProperty Name="data_termino" ColumnName="data_termino" />
+          <ScalarProperty Name="notificacao_enviada" ColumnName="notificacao_enviada" />
+          <ScalarProperty Name="canelamento" ColumnName="canelamento" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="atendente">
+      <EntityTypeMapping TypeName="Models.atendente">
+        <MappingFragment StoreEntitySet="atendente">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_funcionario" ColumnName="id_funcionario" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="Models.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="identidade" ColumnName="identidade" />
+          <ScalarProperty Name="cpf" ColumnName="cpf" />
+          <ScalarProperty Name="endereco" ColumnName="endereco" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente_pataz_entrada_produto">
+      <EntityTypeMapping TypeName="Models.cliente_pataz_entrada_produto">
+        <MappingFragment StoreEntitySet="cliente_pataz_entrada_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+          <ScalarProperty Name="id_venda_produto" ColumnName="id_venda_produto" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente_pataz_entrada_servico">
+      <EntityTypeMapping TypeName="Models.cliente_pataz_entrada_servico">
+        <MappingFragment StoreEntitySet="cliente_pataz_entrada_servico">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+          <ScalarProperty Name="id_venda_servico" ColumnName="id_venda_servico" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente_pataz_saida_produto">
+      <EntityTypeMapping TypeName="Models.cliente_pataz_saida_produto">
+        <MappingFragment StoreEntitySet="cliente_pataz_saida_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+          <ScalarProperty Name="id_venda_produto_pagamento" ColumnName="id_venda_produto_pagamento" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente_pataz_saida_servico">
+      <EntityTypeMapping TypeName="Models.cliente_pataz_saida_servico">
+        <MappingFragment StoreEntitySet="cliente_pataz_saida_servico">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+          <ScalarProperty Name="id_venda_servico_pagamento" ColumnName="id_venda_servico_pagamento" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estoque_entrada">
+      <EntityTypeMapping TypeName="Models.estoque_entrada">
+        <MappingFragment StoreEntitySet="estoque_entrada">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estoque_saida">
+      <EntityTypeMapping TypeName="Models.estoque_saida">
+        <MappingFragment StoreEntitySet="estoque_saida">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="funcionario">
+      <EntityTypeMapping TypeName="Models.funcionario">
+        <MappingFragment StoreEntitySet="funcionario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pet">
+      <EntityTypeMapping TypeName="Models.pet">
+        <MappingFragment StoreEntitySet="pet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_pet_tipo" ColumnName="id_pet_tipo" />
+          <ScalarProperty Name="id_cliete" ColumnName="id_cliete" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="raca" ColumnName="raca" />
+          <ScalarProperty Name="porte" ColumnName="porte" />
+          <ScalarProperty Name="alergias" ColumnName="alergias" />
+          <ScalarProperty Name="observacao" ColumnName="observacao" />
+          <ScalarProperty Name="ultima_alteraco" ColumnName="ultima_alteraco" />
+          <ScalarProperty Name="respnsavel" ColumnName="respnsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pet_tipo">
+      <EntityTypeMapping TypeName="Models.pet_tipo">
+        <MappingFragment StoreEntitySet="pet_tipo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="produto">
+      <EntityTypeMapping TypeName="Models.produto">
+        <MappingFragment StoreEntitySet="produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="fabricante" ColumnName="fabricante" />
+          <ScalarProperty Name="especificacoes" ColumnName="especificacoes" />
+          <ScalarProperty Name="valor_atual" ColumnName="valor_atual" />
+          <ScalarProperty Name="pataz_bonus" ColumnName="pataz_bonus" />
+          <ScalarProperty Name="pataz_custo" ColumnName="pataz_custo" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responasvel" ColumnName="responasvel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="promocao">
+      <EntityTypeMapping TypeName="Models.promocao">
+        <MappingFragment StoreEntitySet="promocao">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="porcentagem" ColumnName="porcentagem" />
+          <ScalarProperty Name="data_inicio" ColumnName="data_inicio" />
+          <ScalarProperty Name="data_termino" ColumnName="data_termino" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="promocao_produto">
+      <EntityTypeMapping TypeName="Models.promocao_produto">
+        <MappingFragment StoreEntitySet="promocao_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_promocao" ColumnName="id_promocao" />
+          <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="promocao_servico">
+      <EntityTypeMapping TypeName="Models.promocao_servico">
+        <MappingFragment StoreEntitySet="promocao_servico">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_promocao" ColumnName="id_promocao" />
+          <ScalarProperty Name="id_servico" ColumnName="id_servico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="servico">
+      <EntityTypeMapping TypeName="Models.servico">
+        <MappingFragment StoreEntitySet="servico">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tipo_executante" ColumnName="tipo_executante" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="valor_atual" ColumnName="valor_atual" />
+          <ScalarProperty Name="tempo" ColumnName="tempo" />
+          <ScalarProperty Name="pataz_bonus" ColumnName="pataz_bonus" />
+          <ScalarProperty Name="pataz_custo" ColumnName="pataz_custo" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="respnsavel" ColumnName="respnsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="servico_produto">
+      <EntityTypeMapping TypeName="Models.servico_produto">
+        <MappingFragment StoreEntitySet="servico_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_servico" ColumnName="id_servico" />
+          <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="servico_valor">
+      <EntityTypeMapping TypeName="Models.servico_valor">
+        <MappingFragment StoreEntitySet="servico_valor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_servico" ColumnName="id_servico" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="Models.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="usuario_tipo" ColumnName="usuario_tipo" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="ultimo_acesso" ColumnName="ultimo_acesso" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario_tipo">
+      <EntityTypeMapping TypeName="Models.usuario_tipo">
+        <MappingFragment StoreEntitySet="usuario_tipo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venda">
+      <EntityTypeMapping TypeName="Models.venda">
+        <MappingFragment StoreEntitySet="venda">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venda_produto">
+      <EntityTypeMapping TypeName="Models.venda_produto">
+        <MappingFragment StoreEntitySet="venda_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_venda" ColumnName="id_venda" />
+          <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+          <ScalarProperty Name="valor_unitario" ColumnName="valor_unitario" />
+          <ScalarProperty Name="valor_unitario_pataz" ColumnName="valor_unitario_pataz" />
+          <ScalarProperty Name="valor_total" ColumnName="valor_total" />
+          <ScalarProperty Name="valor_total_pataz" ColumnName="valor_total_pataz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venda_produto_pagamento">
+      <EntityTypeMapping TypeName="Models.venda_produto_pagamento">
+        <MappingFragment StoreEntitySet="venda_produto_pagamento">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_venda_produto" ColumnName="id_venda_produto" />
+          <ScalarProperty Name="valor_total" ColumnName="valor_total" />
+          <ScalarProperty Name="valor_total_pataz" ColumnName="valor_total_pataz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venda_servico">
+      <EntityTypeMapping TypeName="Models.venda_servico">
+        <MappingFragment StoreEntitySet="venda_servico">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_venda" ColumnName="id_venda" />
+          <ScalarProperty Name="id_servico" ColumnName="id_servico" />
+          <ScalarProperty Name="id_pet" ColumnName="id_pet" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+          <ScalarProperty Name="valor_unitario" ColumnName="valor_unitario" />
+          <ScalarProperty Name="valor_unitario_pataz" ColumnName="valor_unitario_pataz" />
+          <ScalarProperty Name="valor_total" ColumnName="valor_total" />
+          <ScalarProperty Name="valor_total_pataz" ColumnName="valor_total_pataz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venda_servico_pagamento">
+      <EntityTypeMapping TypeName="Models.venda_servico_pagamento">
+        <MappingFragment StoreEntitySet="venda_servico_pagamento">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_venda_servico" ColumnName="id_venda_servico" />
+          <ScalarProperty Name="valor_total" ColumnName="valor_total" />
+          <ScalarProperty Name="valor_total_pataz" ColumnName="valor_total_pataz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="veterinario">
+      <EntityTypeMapping TypeName="Models.veterinario">
+        <MappingFragment StoreEntitySet="veterinario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_funcionario" ColumnName="id_funcionario" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="cpf" ColumnName="cpf" />
+          <ScalarProperty Name="identidade" ColumnName="identidade" />
+          <ScalarProperty Name="registro" ColumnName="registro" />
+          <ScalarProperty Name="ultima_alteracao" ColumnName="ultima_alteracao" />
+          <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="veterinario_pet_tipo">
+      <EntityTypeMapping TypeName="Models.veterinario_pet_tipo">
+        <MappingFragment StoreEntitySet="veterinario_pet_tipo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_veterinario" ColumnName="id_veterinario" />
+          <ScalarProperty Name="id_pet_tipo" ColumnName="id_pet_tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
