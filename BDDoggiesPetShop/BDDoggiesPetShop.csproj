@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44375</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -67,6 +67,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dumps\doggis_db_agendamento.sql" />
+    <Content Include="Dumps\doggis_db_atendente.sql" />
+    <Content Include="Dumps\doggis_db_cliente.sql" />
+    <Content Include="Dumps\doggis_db_cliente_pataz_entrada_produto.sql" />
+    <Content Include="Dumps\doggis_db_cliente_pataz_entrada_servico.sql" />
+    <Content Include="Dumps\doggis_db_cliente_pataz_saida_produto.sql" />
+    <Content Include="Dumps\doggis_db_cliente_pataz_saida_servico.sql" />
+    <Content Include="Dumps\doggis_db_estoque_entrada.sql" />
+    <Content Include="Dumps\doggis_db_estoque_saida.sql" />
+    <Content Include="Dumps\doggis_db_funcionario.sql" />
+    <Content Include="Dumps\doggis_db_pet.sql" />
+    <Content Include="Dumps\doggis_db_pet_tipo.sql" />
+    <Content Include="Dumps\doggis_db_produto.sql" />
+    <Content Include="Dumps\doggis_db_promocao.sql" />
+    <Content Include="Dumps\doggis_db_promocao_produto.sql" />
+    <Content Include="Dumps\doggis_db_promocao_servico.sql" />
+    <Content Include="Dumps\doggis_db_servico.sql" />
+    <Content Include="Dumps\doggis_db_servico_produto.sql" />
+    <Content Include="Dumps\doggis_db_servico_valor.sql" />
+    <Content Include="Dumps\doggis_db_usuario.sql" />
+    <Content Include="Dumps\doggis_db_usuario_tipo.sql" />
+    <Content Include="Dumps\doggis_db_venda.sql" />
+    <Content Include="Dumps\doggis_db_venda_produto.sql" />
+    <Content Include="Dumps\doggis_db_venda_produto_pagamento.sql" />
+    <Content Include="Dumps\doggis_db_venda_servico.sql" />
+    <Content Include="Dumps\doggis_db_venda_servico_pagamento.sql" />
+    <Content Include="Dumps\doggis_db_veterinario.sql" />
+    <Content Include="Dumps\doggis_db_veterinario_pet_tipo.sql" />
+    <Content Include="Dumps\DumpDoggisPetShop.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +110,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -96,7 +126,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51759</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51759/</IISUrl>
+          <IISUrl>https://localhost:44375/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

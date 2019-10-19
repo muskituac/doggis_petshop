@@ -19,38 +19,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBASE", "WebBASE\WebBASE.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBUSINESS", "WebBUSINESS\WebBUSINESS.csproj", "{75F53E36-DDCF-43BA-9798-A503DA800A13}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BD", "BD", "{8653E747-6E73-418D-B4EE-B13B2B0174B6}"
-	ProjectSection(SolutionItems) = preProject
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_agendamento.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_agendamento.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_atendente.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_atendente.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_cliente.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_cliente.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_cliente_pataz_entrada_produto.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_cliente_pataz_entrada_produto.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_cliente_pataz_entrada_servico.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_cliente_pataz_entrada_servico.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_cliente_pataz_saida_produto.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_cliente_pataz_saida_produto.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_cliente_pataz_saida_servico.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_cliente_pataz_saida_servico.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_estoque_entrada.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_estoque_entrada.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_estoque_saida.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_estoque_saida.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_funcionario.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_funcionario.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_pet.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_pet.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_pet_tipo.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_pet_tipo.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_produto.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_produto.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_promocao.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_promocao.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_promocao_produto.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_promocao_produto.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_promocao_servico.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_promocao_servico.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_servico.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_servico.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_servico_produto.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_servico_produto.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_servico_valor.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_servico_valor.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_usuario.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_usuario.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_usuario_tipo.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_usuario_tipo.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_venda.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_venda.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_venda_produto.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_venda_produto.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_venda_produto_pagamento.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_venda_produto_pagamento.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_venda_servico.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_venda_servico.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_venda_servico_pagamento.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_venda_servico_pagamento.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_veterinario.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_veterinario.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_veterinario_pet_tipo.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop\doggis_db_veterinario_pet_tipo.sql
-		C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop.sql = C:\Users\Fabrício\Documents\dumps\DumpDoggisPetShop.sql
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BD", "BD", "{001BDA01-83BC-40F6-BEBF-5906D0949826}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDDoggiesPetShop", "BDDoggiesPetShop\BDDoggiesPetShop.csproj", "{89BBEAB1-8B65-4B7B-8AC9-B878899DCB36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +45,10 @@ Global
 		{75F53E36-DDCF-43BA-9798-A503DA800A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75F53E36-DDCF-43BA-9798-A503DA800A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75F53E36-DDCF-43BA-9798-A503DA800A13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89BBEAB1-8B65-4B7B-8AC9-B878899DCB36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89BBEAB1-8B65-4B7B-8AC9-B878899DCB36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89BBEAB1-8B65-4B7B-8AC9-B878899DCB36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89BBEAB1-8B65-4B7B-8AC9-B878899DCB36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +58,7 @@ Global
 		{36A687A6-08C5-464A-9BAF-37CBE5131496} = {331198F4-6C0D-4BA2-8670-E169CC5F57E6}
 		{CE4E5E7B-FB2B-47C3-90B6-CB09B4A8AE7D} = {EF41E62F-915B-4C0C-AE34-3A4D17C2E0E0}
 		{75F53E36-DDCF-43BA-9798-A503DA800A13} = {FFDF18C4-B516-4B2A-8C00-6055B4619D60}
+		{89BBEAB1-8B65-4B7B-8AC9-B878899DCB36} = {001BDA01-83BC-40F6-BEBF-5906D0949826}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C626A6D5-9EF8-44B7-9EC0-973A91695C1F}
