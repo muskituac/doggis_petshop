@@ -1,0 +1,69 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+    ViewBag.Title = "Atendente - Cadastro";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Home/IndexAdministrador?usuario_id=@ViewBag.UsuarioID">Home</a></li>
+        <li class="breadcrumb-item"><a href="~/Atendente/Lista?usuario_id=@ViewBag.UsuarioID">Atendentes</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Cadastro</li>
+    </ol>
+</nav>
+
+<div class="jumbotron">
+    <h3>Cadastro de atendentens</h3>
+    <p class="lead">
+        Cadastro de novos atendentes.
+    </p>
+    <hr class="my-4">
+    <p>Para acessar a lista dos atendentes cadastros clique no botão abaixo.</p>
+    <a class="btn btn-primary" href="~/Atendente/Lista?usuario_id=@ViewBag.UsuarioID" role="button">Ir para lista de atendentes</a>
+</div>
+
+<form>
+    <div class="form-group row">
+        <label for="atendente_id" class="col-sm-2 col-form-label">Codigo:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="atendente_id" placeholder="" values="" readonly disabled>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="atendente_nome" class="col-sm-2 col-form-label">Nome:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="atendente_nome" placeholder="Informe o nome do atendente">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="atendente_id_funcionario" class="col-sm-2 col-form-label">Funcionário:</label>
+        <div class="col-sm-10">
+            <select type="text" class="form-control" id="atendente_id_funcionario">
+                <option value="">Selecione um funcionário...</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row p-3" id="content_form_button">
+        <a href="javascript:void(0);" class="btn btn-success mr-2" id="btn_atendente_salvar">Salvar</a>
+        <a href="javascript:void(0);" class="btn btn-danger" id="btn_atendente_cancelar">Cancelar</a>
+    </div>
+
+    <div class="form-group row d-none" id="content_form_message">
+        <label class="alert alert-success d-none" id="message_success">
+            Atendente salvo com sucesso. Clique <a href="~/Atendente/Cadastro?usuario_id=@ViewBag.UsuarioID">aqui</a> para realizar um novo cadastro.
+        </label>
+        <label class="alert alert-danger d-none" id="message_fail">Falha ao registrar o atendente.</label>
+    </div>
+
+    <div class="form-group row d-none" id="content_form_loader">
+        <img src="~/Content/images/loader.gif" />
+    </div>
+</form>
+
+<script src="~/Scripts/ViewModel/ViewModelCadastroAtendente.js"></script>
+<script src="~/Scripts/Views/Atendente/Cadastro.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        Cadastro.Initialize('@ViewBag.API_URL', '@ViewBag.UsuarioID');
+    });
+</script>

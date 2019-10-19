@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+    ViewBag.Title = "Funcionário - Lista";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Home/IndexAdministrador?usuario_id=@ViewBag.UsuarioID">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Funcionários</li>
+    </ol>
+</nav>
+
+<div class="jumbotron">
+    <h3>Lista de funcionários</h3>
+    <p class="lead">
+        Lista com todos os funcionários cadastrados
+    </p>
+    <hr class="my-4">
+    <p>Para registrar um novo funcionário clique no botão abaixo.</p>
+    <a class="btn btn-primary" href="~/Funcionario/Cadastro?usuario_id=@ViewBag.UsuarioID" role="button">Novo funcionário</a>
+</div>
+
+<table class="table d-none" id="table_funcionarios">
+    <thead>
+        <tr>
+            <th scope="col" class='text-center'>#</th>
+            <th scope="col" class='text-center'>Codigo</th>
+            <th scope="col" class='text-left'>Nome</th>
+            <th scope="col" class='text-left'>Usuário</th>
+            <th scope="col" class='text-center'>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<div class="d-none" id="content_list_message">
+    <label class="alert alert-danger" id="message_fail">Falha ao carregar lista de funcionários.</label>
+</div>
+
+<div class="row d-none" id="content_list_loader">
+    <img src="~/Content/images/loader.gif" />
+</div>
+
+
+<script src="~/Scripts/Views/Funcionario/Lista.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        Lista.Initialize('@ViewBag.API_URL', '@ViewBag.UsuarioID');
+    });
+</script>
